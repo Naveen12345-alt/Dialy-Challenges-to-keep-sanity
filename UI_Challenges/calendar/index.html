@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calender</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body class="h-screen w-screen bg-gray-100">
+    <div class="p-2">
+      <select
+        class="text-2xl bg-green-100 p-2 hover:bg-green-200 duration-200 rounded-md border-2 border-solid border-blue-400 font-semibold cursor-pointer text-center"
+        name="Pick One Month"
+        id="month-picker"
+      ></select>
+    </div>
+
+    <div
+      id="month-view"
+      class="m-2 p-1 grid grid-cols-7 mt-6 border-2 border-solid border-blue-400"
+    ></div>
+
+    <template id="day-tile">
+      <div
+        id="day-label"
+        class="font-extrabold text-center p-2 h-24 border-2 border-solid bg-white flex items-center justify-center"
+      >
+        Monday
+      </div>
+    </template>
+
+    <template id="date-tile">
+      <div
+        id="date-tile"
+        class="font-extrabold text-center h-24 bg-green-200 border-solid border-2"
+      >
+        <span id="date-label">Monday</span>
+      </div>
+    </template>
+    <template id="dialog-modal">
+      <div
+        id="dialog-modal"
+        class="w-2/3 h-2/3 bg-purple-100 z-30 absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2 rounded-lg"
+      >
+        <div class="flex flex-col">
+          <div class="h-12 p-8 flex justify-center items-center bg-green-200 rounded-t-lg">
+            Event: <span id="event-details"></span>
+          </div>
+          <input
+            id="event-name"
+            class="h-12 mt-8 m-auto w-3/4 border-2 border-solid border-black"
+            type="text"
+            placeholder="Enter an event name"
+          />
+          <textarea
+            id="event-description"
+            class="h-60 mt-8 m-auto w-11/12 border-2 border-solid border-black"
+            name="description"
+            cols="30"
+            row="30"
+            placeholder="Description"
+          ></textarea>
+          <div class="flex justify-around h-12 mt-4 rounded-b-lg">
+            <button id="close-btn" class="bg-red-600 w-full rounded-bl-lg">Close</button>
+            <button id="save-btn" class="bg-green-600 w-full rounded-br-lg">Save</button>
+          </div>
+        </div>
+      </div>
+    </template>
+  </body>
+</html>
