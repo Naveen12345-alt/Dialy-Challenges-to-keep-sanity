@@ -76,20 +76,6 @@ export default class Layout {
       const res = await this.overlayService.initOverlay(date, eventDetail, eventDescription);
       eventCallback(res.eventDetail, res.eventDescription, date.getTime());
       console.log(res, 'Response from Overlay');
-
-      const eventNode = this.eventSummary.content.cloneNode(true);
-      eventNode.querySelector('#event-summary').textContent = event.eventDetail;
-      eventNode.querySelector('#event-summary').addEventListener('click', async (e) => {
-        const res = await this.overlayService.initOverlay(
-          date,
-          event.eventDetail,
-          event.eventDescription
-        );
-        if (res) {
-          eventCallback(res.eventDetail, res.eventDescription, date.getTime());
-        }
-      });
-      node.querySelector('#date-tile').appendChild(eventNode);
     });
   }
 
