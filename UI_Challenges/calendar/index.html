@@ -33,11 +33,16 @@
     <template id="date-tile">
       <div
         id="date-tile"
-        class="font-extrabold text-center h-24 bg-green-200 border-solid border-2"
+        class="font-extrabold text-center h-24 bg-green-200 border-solid border-2 cursor-pointer"
       >
-        <span id="date-label">Monday</span>
+        <div id="date-label" class="h-8">Monday</div>
       </div>
     </template>
+
+    <template id="event-summary">
+      <div id="event-summary" class="bg-transparent font-semibold text-sm bg-gray-400 m-1"></div>
+    </template>
+
     <template id="dialog-modal">
       <div
         id="dialog-modal"

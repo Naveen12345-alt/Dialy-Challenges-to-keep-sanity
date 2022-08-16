@@ -7,19 +7,42 @@ export default class Layout {
     this.monthPicker = document.getElementById('month-picker');
     this.dayNode = document.getElementById('day-tile');
     this.monthWrapper = document.getElementById('month-view');
+    this.eventSummary = document.getElementById('event-summary');
     this.overlayService = new OverlayService();
   }
 
-  initMonthLayout(days, month, year) {
+  initMonthLayout(days, month, year, eventCallback, events) {
+    const documentFragment = new DocumentFragment();
     for (let i = 1; i <= days; i++) {
       const date = new Date(year, month, i, 5, 30);
       if (i === 1) {
         this.setDayHeader(date.getDay());
       }
       const node = this.setDateHeader(i);
-      this.setListenerOnDate(node, date);
-      this.monthWrapper.appendChild(node);
+      this.setEventsOnDate(events, node, eventCallback, date);
+      this.setDateListener(node, date, eventCallback);
+      documentFragment.appendChild(node);
+      this.monthWrapper.appendChild(documentFragment);
     }
+  }
+
+  setEventsOnDate(events, node, eventCallback, date) {
+    const eventDocumentFragment = new DocumentFragment();
+    events.forEach((event) => {
+      if (new Date(event.timestamp).getDate() === date.getDate()) {
+        const node = this.eventSummary.content.cloneNode(true);
+        node.querySelector('#event-summary').textContent = event.title;
+        node.querySelector('#event-summary').addEventListener('click', async (e) => {
+          const res = await this.overlayService.initOverlay(date, event.title, event.description);
+          if (res) {
+            eventCallback(res.eventDetail, res.eventDescription, date.getTime());
+          }
+          console.log(res, 'Response for Event Sumary Card');
+        });
+        eventDocumentFragment.appendChild(node);
+      }
+    });
+    node.querySelector('#date-tile').appendChild(eventDocumentFragment);
   }
 
   initMonthDropdown(monthNames, year, listenerCb) {
@@ -36,6 +59,10 @@ export default class Layout {
     this.setMonthListener(listenerCb);
   }
 
+  disposeMonthLayout() {
+    this.monthWrapper.textContent = '';
+  }
+
   selectMonth(month) {
     this.monthPicker.value = month;
   }
@@ -44,11 +71,25 @@ export default class Layout {
     this.monthPicker.addEventListener('change', (e) => callback(e));
   }
 
-  setListenerOnDate(node, date) {
-    node.getElementById('date-tile').addEventListener('click', async (e) => {
-      const res = await this.overlayService.initOverlay(date);
+  setDateListener(node, date, eventCallback, eventDetail, eventDescription) {
+    node.querySelector('#date-tile #date-label').addEventListener('click', async (e) => {
+      const res = await this.overlayService.initOverlay(date, eventDetail, eventDescription);
+      eventCallback(res.eventDetail, res.eventDescription, date.getTime());
       console.log(res, 'Response from Overlay');
-      console.log('click date: ' + e.target.children[0].textContent);
+
+      const eventNode = this.eventSummary.content.cloneNode(true);
+      eventNode.querySelector('#event-summary').textContent = event.eventDetail;
+      eventNode.querySelector('#event-summary').addEventListener('click', async (e) => {
+        const res = await this.overlayService.initOverlay(
+          date,
+          event.eventDetail,
+          event.eventDescription
+        );
+        if (res) {
+          eventCallback(res.eventDetail, res.eventDescription, date.getTime());
+        }
+      });
+      node.querySelector('#date-tile').appendChild(eventNode);
     });
   }
 

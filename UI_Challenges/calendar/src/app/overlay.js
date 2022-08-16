@@ -4,19 +4,26 @@ export default class OverlayService {
     this.dialogNode = document.getElementById('dialog-modal');
   }
 
-  initOverlay(date) {
+  initOverlay(date, eventName, eventDescription) {
     return new Promise((resolve, reject) => {
       const node = this.dialogNode.content.cloneNode(true);
       this.current = node.getElementById('dialog-modal');
       node.getElementById(
         'event-details'
       ).textContent = `${date.getDay()} ${date.getMonth()} ${date.getFullYear()}`;
-      this.addEventListenerToOverlay(node, resolve);
+      console.log(eventName, eventDescription);
+      if (eventName && eventDescription) {
+        node.querySelector('#event-name').disabled = true;
+        node.querySelector('#event-description').disabled = true;
+        node.querySelector('#event-name').value = eventName ?? '';
+        node.querySelector('#event-description').value = eventDescription ?? '';
+      }
+      this.setOverlayListener(node, resolve);
       document.body.appendChild(node);
     });
   }
 
-  addEventListenerToOverlay(node, resolve) {
+  setOverlayListener(node, resolve) {
     node.getElementById('close-btn').addEventListener('click', (e) => {
       this.destroyDialog();
       resolve(false);
