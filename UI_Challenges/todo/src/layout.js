@@ -29,7 +29,7 @@ export default class layout {
     checkboxInput.checked = data.done;
 
     if (data.done) {
-      this.markAsDone(input, checkImg);
+      this.markAsDone(input, checkImg, taskContainer);
     }
 
     const patchInput = this.debounceInput(this.stateService.patchTodo.bind(this.stateService), 500);
@@ -43,9 +43,9 @@ export default class layout {
       checkboxInput.done = !data.done;
 
       if (checkboxInput.done) {
-        this.markAsDone(input, checkImg);
+        this.markAsDone(input, checkImg, taskContainer);
       } else {
-        this.unmarkAsDone(input, checkImg);
+        this.unmarkAsDone(input, checkImg, taskContainer);
       }
 
       this.stateService.changeStatus(data.id, checkboxInput.checked);
@@ -61,11 +61,13 @@ export default class layout {
     this.wrapperRef.removeChild(node);
   }
 
-  markAsDone(input, checkImg) {
+  markAsDone(input, checkImg, taskContainer) {
+    taskContainer.classList.add('border-green-400');
     input.classList.add('line-through', 'opacity-50');
     checkImg.classList.remove('hidden');
   }
-  unmarkAsDone(input, checkImg) {
+  unmarkAsDone(input, checkImg, taskContainer) {
+    taskContainer.classList.remove('border-green-400');
     input.classList.remove('line-through', 'opacity-50');
     checkImg.classList.add('hidden');
   }
