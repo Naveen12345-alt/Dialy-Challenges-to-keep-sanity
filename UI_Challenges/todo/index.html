@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Todo List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body class="box-border h-screen w-screen bg-scroll">
+    <div class="flex flex-row justify-center items-center mt-4">
+      <input
+        id="task-todo"
+        type="text"
+        name="todo"
+        placeholder="Please enter task to accomplish"
+        class="p-4 font-semibold text-xl border-2 border-solid outline-none border-blue-300 focus:border-blue-500 rounded-md w-8/12"
+      />
+    </div>
+
+    <div id="task-wrapper" class="flex flex-col gap-2 justify-center items-center mt-4"></div>
+
+    <template id="task">
+      <div
+        class="task-container p-4 rounded-md border-2 border-red-400 flex flex-row justify-center items-center w-3/4 shadow-md"
+      >
+        <div class="relative w-8 h-8 task-check">
+          <input
+            type="checkbox"
+            name="status"
+            class="absolute opacity-0 h-full w-full z-40 cursor-pointer"
+          />
+          <label
+            for="status"
+            class="absolute h-full w-full bg-gray-100 rounded-full duration-300 z-0"
+          ></label>
+          <img
+            height="32px"
+            width="32px"
+            src="https://raw.githubusercontent.com/PKief/vscode-markdown-checkbox/main/logo.png"
+            class="absolute h-full w-full hidden"
+            alt="checked"
+          />
+        </div>
+        <input
+          type="text"
+          name="todo-item-name"
+          placeholder="Enter Task Title"
+          class="font-medium text-lg outline-none w-11/12 px-12 task-input"
+        /><img
+          src="https://icon-library.com/images/delete-icon-png/delete-icon-png-19.jpg"
+          width="24px"
+          height="16px"
+          class="h-6 task-delete"
+          alt="delete"
+        />
+      </div>
+    </template>
+  </body>
+</html>
