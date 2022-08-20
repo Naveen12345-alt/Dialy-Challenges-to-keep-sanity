@@ -11,7 +11,6 @@ export default class OverlayService {
       node.getElementById(
         'event-details'
       ).textContent = `${date.getDay()} ${date.getMonth()} ${date.getFullYear()}`;
-      console.log(eventName, eventDescription);
       if (eventName && eventDescription) {
         node.querySelector('#event-name').disabled = true;
         node.querySelector('#event-description').disabled = true;

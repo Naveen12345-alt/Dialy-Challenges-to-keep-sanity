@@ -17,7 +17,6 @@ export default class TodoInput {
   addTodo(value) {
     if (value.trim()) {
       const valueToAddToLayout = this.stateService.addTodo(value);
-      console.log(valueToAddToLayout);
       this.layoutService.addToLayout(valueToAddToLayout);
       this.inputNode.value = '';
     } else {
