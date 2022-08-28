@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Task Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body class="border-box h-screen w-screen flex flex-col gap-8 bg-gray-100">
+    <div class="flex justify-between h-20 bg-red-300 font-bold">
+      <h1 class="my-auto pl-4 text-xl leading-4 text-gray-600">Sprint.Task.Tracker</h1>
+      <button
+        class="create-btn mr-4 my-2 p-2 text-lg font-bold bg-blue-100 border-4 border-solid rounded-lg border-blue-600 hover:bg-white text-gray-600 inline-flex items-center"
+      >
+        + Create
+      </button>
+    </div>
+
+    <div class="grid grid-cols-4 gap-2 mx-2 dropzone">
+      <div class="flex flex-col gap-4 dropbox" id="backlog">
+        <h2
+          class="h-10 border-2 border-gray-900 bg-red-300 font-md text-lg flex justify-center items-center text-gray-400 w-full"
+        >
+          Backlog
+        </h2>
+      </div>
+      <div class="flex flex-col gap-4 dropbox" id="progress">
+        <h2
+          class="h-10 border-2 border-gray-900 bg-yellow-300 font-md text-lg flex justify-center items-center text-gray-400 w-full"
+        >
+          In Progress
+        </h2>
+      </div>
+      <div class="flex flex-col gap-4 dropbox" id="review">
+        <h2
+          class="h-10 border-2 border-gray-900 bg-purple-300 font-md text-lg flex justify-center items-center text-gray-400 w-full"
+        >
+          In Review
+        </h2>
+      </div>
+      <div class="flex flex-col gap-4 dropbox" id="done">
+        <h2
+          class="h-10 border-2 border-gray-900 bg-green-300 font-md text-lg flex justify-center items-center text-gray-400 w-full"
+        >
+          Done
+        </h2>
+      </div>
+    </div>
+
+    <template id="task">
+      <div
+        draggable="true"
+        class="task flex flex-col p-2 gap-2 items-start bg-white cursor-move hover:bg-blue-300 border border-gray-300 rounded-md"
+      >
+        <h3 class="category border border-gray-200 rounded-3xl bg-gray-100 p-1 px-2">sdjlkvs</h3>
+        <h3 class="title font-semibold leading-4 uppercase">vdnd bj</h3>
+        <p class="description text-gray-500">sadfkbsj</p>
+      </div>
+    </template>
+
+    <template id="sidebar">
+      <div id="sidebar-wrp" class="absolute right-0 top-0 bg-white md:w-1/4 w-1/2 h-screen">
+        <div class="flex flex-row justify-between content-between p-2">
+          <h2 class="font-semibold text-lg text-blue-300">Task</h2>
+          <div class="close font-semibold text-lg mr-4 cursor-pointer">X</div>
+        </div>
+        <hr />
+
+        <input type="text" id="title" name="title" placeholder="Enter Title" class="rounded p-4
+        border border-black bg-gray-100 hover:bg-gray-200 duration-200 ml-2 mt-2 cursor-pointer"
+      </div>
+      <select
+        name="category"
+        id="category"
+        placeholder="Select Category"
+        class="m-2 p-3 cursor-pointer w-11/12"
+      >
+        <option value="PM">Product Manager</option>
+        <option value="UI">Product Designer</option>
+        <option value="frontend">Frontend Engineer</option>
+        <option value="business_development">Business Development Manager</option>
+      </select>
+      <textarea
+        cols="30"
+        rows="15"
+        noresize
+        id="description"
+        class="w-11/12 ml-2 mr-2 bg-gray-100 hover:bg-gray-200 duration-200 cursor-pointer border border-black"
+      ></textarea>
+      <button
+        type="button"
+        class="save-btn ml-2 mr-2 border border-black bg-blue-200 rounded p-4 font-semibold"
+      >
+        Save
+      </button>
+    </template>
+  </body>
+</html>
