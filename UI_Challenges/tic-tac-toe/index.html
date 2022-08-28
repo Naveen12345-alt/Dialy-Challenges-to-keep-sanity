@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Tic Tac Toe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body class="h-screen w-screen bg-gray-100 flex flex-col items-center pt-12">
+    <h1 id="turn" class="text-2xl font-semibold mb-6"></h1>
+
+    <div id="maze" class="grid grid-cols-3 grid-rows-3 border-2 h-3/4 aspect-square"></div>
+
+    <template id="cell">
+      <div
+        class="w-full h-full select-none cursor-pointer p-4 border-2 border-solid border-gray-700 text-6xl flex items-center justify-center content bg-white hover:bg-blue-600 hover:bg-opacity-5 duration-200"
+      ></div>
+    </template>
+  </body>
+</html>
