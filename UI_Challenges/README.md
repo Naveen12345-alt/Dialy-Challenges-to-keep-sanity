@@ -1,1 +1,1 @@
--[X] **GIPHY** -[X] **CALENDER** -[X] **TODO** -[X] **TASK_TRACKER** -[X] **CAROUSAL** -[X] **COMMENT_WIDGET**
+- [x] **GIPHY** - [x] **CALENDER** - [x] **TODO** - [x] **TASK_TRACKER** - [x] **CAROUSAL** - [x] **COMMENT_WIDGET**
