@@ -3,10 +3,35 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Skeleton-bolierplate</title>
+    <title>Comments-Widget</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body class="box-border h-screen w-screen">
-    <div class="bg-gray-700 text-center change-dynam">Webpack boilerplate</div>
+  <body class="box-border m-0 p-0">
+    <div
+      id="comments-wrapper"
+      class="mx-4 mt-4 flex flex-col gap-y-4 items-start w-screen md:w-2/3 comments-wrapper"
+    ></div>
+
+    <template id="comment">
+      <div class="comment flex flex-col border border-gray-200 rounded-lg gap-y-2">
+        <div class="content m-auto w-full rounded-t-lg p-2"></div>
+        <div class="actions">
+          <a class="delete text-red-500 mr-4">delete</a>
+          <a class="reply text-green-400"> reply</a>
+        </div>
+        <div class="comment-box"></div>
+        <div class="nested-comments hidden justify-end"></div>
+      </div>
+    </template>
+
+    <template id="input">
+      <textarea
+        class="border border-black rounded-md p-2 comment-input"
+        name="comment"
+        cols="30"
+        rows="2"
+        placeholder="Type a comment"
+      ></textarea>
+    </template>
   </body>
 </html>
