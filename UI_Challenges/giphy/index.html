@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Giphy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div class="fixed w-full left-0 top-0 h-1 bg-gray-300 z-40 hidden" id="loader">
+      <div class="loader h-full w-1/2 bg-blue-500"></div>
+    </div>
+    <label for="search">Search Gif:</label>
+    <input type="search" name="search" id="search" placeholder="Search For Awesome GIF's" />
+    <div class="search-results grid grid-cols-4"></div>
+    <div
+      class="hidden my-10 text-center bg-blue-300 text-xl font-bold leading-4 p-3"
+      id="load-more"
+    >
+      Load More
+    </div>
+
+    <template id="result">
+      <a class="result" target="_blank ">
+        <img />
+      </a>
+    </template>
+  </body>
+</html>
