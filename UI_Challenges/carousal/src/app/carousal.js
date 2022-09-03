@@ -17,7 +17,7 @@ export default class Carousal {
       throw new Error('Cannot find a valid element');
     }
 
-    if (typeof options !== 'object' || typeof options === 'null') {
+    if (typeof options !== 'object' || options == null) {
       throw new Error('Provide Valid Options');
     }
   }
