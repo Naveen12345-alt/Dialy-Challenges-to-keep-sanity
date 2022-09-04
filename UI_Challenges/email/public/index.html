@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Email Widget</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body class="box-border m-0 p-0">
+    <div class="bg-gray-700 text-center p-4 text-white font-extrabold leading-4 tracking-widest">
+      MailBox
+    </div>
+    <div id="email-wrapper" class="flex">
+      <div class="email-list border-r-2 border-solid border-black p-2 bg-gray-200"></div>
+      <div class="email-body p-2"></div>
+    </div>
+
+    <template id="email-body">
+      <h1 class="title font-extrabold text-2xl capitalize p-4 mb-4"></h1>
+      <hr />
+      <p class="body p-4 text-lg"></p>
+    </template>
+
+    <template id="email-list-item">
+      <div class="list-item cursor-pointer bg-gray-200 hover:bg-white border-b-2 border-gray-300">
+        <p class="email-list-item title text-lg font-semibold capitalize text-gray-500"></p>
+      </div>
+    </template>
+  </body>
+</html>
