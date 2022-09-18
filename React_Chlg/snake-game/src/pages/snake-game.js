@@ -20,7 +20,7 @@ const SnakeGame = () => {
 
   useEffect(() => {
     isCollapsed(game);
-    isEaten();
+    isEaten(game);
   }, [game]);
 
   const moveSnake = () => {
@@ -54,22 +54,21 @@ const SnakeGame = () => {
     update();
   };
 
-  function isEaten() {
-    setGame((prev) => {
-      let snakeCopy = [...game.snake];
-      let head = { ...snakeCopy[snakeCopy.length - 1] };
-      let food = game.food;
-      if (head.x === food.x && head.y === food.y) {
-        snakeCopy.push(head);
+  function isEaten(prev) {
+    let snakeCopy = [...game.snake];
+    let head = { ...snakeCopy[snakeCopy.length - 1] };
+    let food = game.food;
+    if (head.x === food.x && head.y === food.y) {
+      snakeCopy.push(head);
+      setGame((prev) => {
         return {
           ...prev,
           snake: snakeCopy,
           food: getRandom(),
           speed: increaseSpeed(game.speed),
         };
-      }
-      return prev;
-    });
+      });
+    }
   }
 
   function update() {
