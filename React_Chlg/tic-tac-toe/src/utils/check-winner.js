@@ -29,14 +29,11 @@ const checkWinner = (grid) => {
   for (let [index, row] of grid.entries()) {
     let winner;
     if (checkRow(index)) {
-      console.log(2);
       winner = grid[index][0];
     } else if (checkCol(index)) {
-      console.log(["O", "X"].includes(grid[2][index].split(" ")[1]), index);
       winner = grid[0][index];
     }
     if (winner) {
-      console.log(winner);
       alert(`User ${winner.split(" ")[1]} wins`);
       return;
     }
